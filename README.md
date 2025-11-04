@@ -27,7 +27,7 @@ pip install swagger-sdk
 
 ```bash
 # 克隆或下载项目
-git clone <repository-url>
+git clone https://github.com/AndsGo/swagger-sdk
 cd swagger_sdk
 
 # 安装开发版本
