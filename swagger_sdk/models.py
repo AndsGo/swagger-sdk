@@ -1,8 +1,7 @@
 """基础模型类定义"""
 
 from typing import Optional, Any, List, Dict, Type
-from swagger_sdk.enums import ParamIn, Format, SchemaType, ContentType
-
+from swagger_sdk.enums import ParamIn, Format, SchemaType, ContentType, SecuritySchemeType, ApiKeyLocation
 
 class Parameter:
     """参数配置类"""
@@ -187,17 +186,16 @@ class SecurityScheme:
     
     def __init__(
         self,
-        scheme_type: 'SecuritySchemeType',
+        scheme_type: SecuritySchemeType,
         description: Optional[str] = None,
         name: Optional[str] = None,  # API Key 名称
-        location: Optional['ApiKeyLocation'] = None,  # API Key 位置
+        location: Optional[ApiKeyLocation] = None,  # API Key 位置
         scheme: Optional[str] = None,  # HTTP 认证方案（如 "bearer", "basic"）
         bearer_format: Optional[str] = None,  # Bearer Token 格式（如 "JWT"）
         flows: Optional[Dict[str, Any]] = None,  # OAuth2 流程配置
         open_id_connect_url: Optional[str] = None,  # OpenID Connect URL
         **kwargs
     ):
-        from swagger_sdk.enums import SecuritySchemeType, ApiKeyLocation
         
         self.scheme_type = scheme_type
         self.description = description

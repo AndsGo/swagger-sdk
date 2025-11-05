@@ -2,7 +2,7 @@
 
 from typing import Optional, List, Dict, Any, Callable
 from swagger_sdk.enums import HttpMethod
-from swagger_sdk.models import Parameter, RequestBody, Response, SecurityRequirement
+from swagger_sdk.models import Parameter, RequestBody, Response, SecurityRequirement, SecurityScheme, Schema
 
 
 class SwaggerBuilder:
@@ -41,7 +41,7 @@ class SwaggerBuilder:
         for key, value in kwargs.items():
             setattr(self, key, value)
     
-    def register_component_schema(self, name: str, schema: 'Schema'):
+    def register_component_schema(self, name: str, schema: Schema):
         """
         注册 schema 组件
         
@@ -51,7 +51,7 @@ class SwaggerBuilder:
         """
         self.components["schemas"][name] = schema
     
-    def register_security_scheme(self, name: str, scheme: 'SecurityScheme'):
+    def register_security_scheme(self, name: str, scheme: SecurityScheme):
         """
         注册安全方案
         
@@ -59,7 +59,6 @@ class SwaggerBuilder:
             name: 安全方案名称
             scheme: SecurityScheme 对象
         """
-        from swagger_sdk.models import SecurityScheme
         self.components["securitySchemes"][name] = scheme
     
     def add_server(self, url: str, description: Optional[str] = None, variables: Optional[Dict[str, Any]] = None):
@@ -98,7 +97,7 @@ class SwaggerBuilder:
         parameters: Optional[List[Parameter]] = None,
         request_body: Optional[RequestBody] = None,
         responses: Optional[Dict[int, Response]] = None,
-        security: Optional[List['SecurityRequirement']] = None,
+        security: Optional[List[SecurityRequirement]] = None,
         **kwargs
     ):
         """
