@@ -1,7 +1,8 @@
 # swagger_sdk - Python Swagger 文档生成 SDK
 
 一个独立、灵活的 Python SDK，用于自动生成符合 OpenAPI 3.0 规范的 Swagger 文档。支持通过装饰器注解和类型注解自动扫描接口，也支持手动注册接口信息。
-
+效果:
+![](./docs/images/image-20251109152837001.png)
 ## 特性
 
 - ✅ **零外部依赖**：仅使用 Python 标准库
